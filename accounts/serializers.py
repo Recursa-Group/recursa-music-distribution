@@ -1,14 +1,15 @@
 from rest_framework import serializers
+from django.contrib.auth import authenticate
 from .models import Artist
 
-class ArtistSerializer(serializers.ModelSerializer):
-
+class ArtistRegistrationSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, min_length=8)
     password_confirm = serializers.CharField(write_only=True)
 
     class Meta:
         model = Artist
-        fields = ['id', 'username', 'email', 'artist_name', 'bio', 'profile_image', 'created_at']
+        fields = ['id', 'username', 'email', 'artist_name', 'bio', 'profile_image', 'password', 'password_confirm', 'created_at']
+        read_only_fields = ['id', 'created_at']
 
     def validate(self, data):
         if data['password'] != data['password_confirm']:

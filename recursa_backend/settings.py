@@ -57,12 +57,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    'corsheaders.middeware.CorsMiddleware,
-    'django.middlware.security.SecurityMiddleware'
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
+    "http://localhost:3000",  
     "http://127.0.0.1:3000",
 ]
 
@@ -161,13 +161,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthenticator',
-    ],
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_frameworl.permissions.IsAuthenticated',
-        ],
-}
 
 AUTH_USER_MODEL = 'accounts.Artist'
